@@ -1,29 +1,29 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
 
 const AllJob = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: jobs = [], isLoading, isError, error } = useQuery({
+    const [searchText, setSearchText] = useState('');
+    const [search, setSearch] = useState('');
+    const { data: jobs = [], isLoading, refetch } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('/jobs')
+            if (searchText) {
+                console.log(searchText);
+                const { data } = await axiosSecure.get(`/jobs?search=${searchText}`)
+                return data;
+            }
+            const { data } = await axiosSecure.get(`/jobs`)
             return data;
         }
     })
-    const {
-        jobBannerUrl,
-        jobTitle,
-        userName,
-        userEmail,
-        jobCategory,
-        salaryRange,
-        jobDescription,
-        jobPostingDate,
-        applicationDeadline,
-        jobApplicantsNumber,
-    } = jobs
+    const handleSearch = e => {
+        e.preventDefault();
+        refetch();
+    }
+
     console.log()
     if (isLoading) {
         return <div className='text-center my-12'>
@@ -32,6 +32,19 @@ const AllJob = () => {
     }
     return (
         <div>
+            <form onSubmit={handleSearch} className='flex justify-center items-center'>
+                <label className="input input-bordered flex items-center gap-2">
+                    <input
+                        onChange={e => setSearchText(e.target.value)}
+                        value={searchText}
+                        type="text" className="grow" placeholder="Search" />
+                    <button>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                    </button>
+                </label>
+            </form>
+
 
             <div className="overflow-x-auto max-w-5xl mx-auto">
                 <table

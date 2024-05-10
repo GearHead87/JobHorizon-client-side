@@ -5,7 +5,7 @@ import { isUrl } from "check-valid-url";
 import useAuth from "../hooks/useAuth";
 
 const NavBar = () => {
-    const { user, logout } = useAuth();
+    const { user, logOut } = useAuth();
     const [theme, setTheme] = useState('light')
 
     const handleToggle = e => {
