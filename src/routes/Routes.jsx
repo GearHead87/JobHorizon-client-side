@@ -8,6 +8,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AddJob from "../pages/AddJob";
 import AllJob from "../pages/AllJob";
+import JobDetails from "../pages/JobDetails";
+import PrivateRoute from "./PrivateRoute";
 
   export const router = createBrowserRouter([
     {
@@ -34,6 +36,10 @@ import AllJob from "../pages/AllJob";
         {
           path: '/all-job',
           element: <AllJob></AllJob>
+        },
+        {
+          path: '/job/:id',
+          element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>
         },
       ],
     },
