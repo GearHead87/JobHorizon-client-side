@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const AppliedJobs = () => {
     const axiosSecure = useAxiosSecure();
