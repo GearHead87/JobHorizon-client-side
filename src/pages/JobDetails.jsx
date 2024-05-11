@@ -8,7 +8,7 @@ const JobDetails = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth();
     const { id } = useParams()
-    const { data, isLoading } = useQuery({
+    const { data, isLoading, refetch } = useQuery({
         queryKey: ['job'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/job/${id}`)
@@ -71,8 +71,11 @@ const JobDetails = () => {
 
         axiosSecure.post('/apply-job', jobData)
             .then(res => {
-                // console.log(res);
-                toast.success(res.message)
+                console.log(res);
+                if(res.data.message){
+                    refetch();
+                    toast.success("Job applied Successfully")
+                }
 
             })
             .catch(err => {

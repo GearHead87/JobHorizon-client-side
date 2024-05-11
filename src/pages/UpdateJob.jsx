@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -11,11 +11,11 @@ const UpdateJob = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
     const [startDate, setStartDate] = useState(new Date())
-
     const { id } = useParams()
-
+    
+    // fetch Data
     const { data, isLoading, refetch } = useQuery({
-        queryKey: ['job-update'],
+        queryKey: [`job-update-${id}`],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/job/${id}`)
             setStartDate(new Date(data.applicationDeadline))
@@ -70,12 +70,18 @@ const UpdateJob = () => {
             applicationDeadline,
             jobApplicantsNumber,
         }
+
+        if(user.email !== userEmail){
+            return toast.error("You can't modify others job")
+        }
+
         try {
             const { data } = await axiosSecure.put(`/job/${_id}`, jobData)
             console.log(data);
             if (data.modifiedCount > 0) {
                 toast.success("Job Updated Successfully");
                 refetch();
+                navigate('/my-jobs')
             }
         }
         catch (error) {

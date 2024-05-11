@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
 
 const AllJob = () => {
     const axiosSecure = useAxiosSecure();
     const [searchText, setSearchText] = useState('');
-    const [search, setSearch] = useState('');
     const { data: jobs = [], isLoading, refetch } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {

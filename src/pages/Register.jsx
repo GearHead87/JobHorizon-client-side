@@ -37,10 +37,10 @@ const Register = () => {
             .then((result) => {
                 console.log(result.user);
                 updateUserProfile(name, photoURL)
-                    .then((result) => {
+                    .then(() => {
                         // console.log("profile updateed" + result)
                     })
-                    .catch((error) => {
+                    .catch(() => {
                         // console.log(error)
                     })
                 toast.success(`Successfully registered user: ${name}`)

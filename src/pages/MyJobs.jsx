@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
@@ -31,7 +30,7 @@ const MyJobs = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+        }).then(() => {
             axiosSecure.delete(`/job/${id}`)
                 .then(res => {
                     console.log(res);
