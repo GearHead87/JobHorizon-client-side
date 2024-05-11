@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 });
 
 const AppliedJobsPDF = ({ jobs }) => {
-    console.log(jobs)
     return (
         // <PDFViewer style={{ width: '100%', height: '100vh' }}>
         <Document>
