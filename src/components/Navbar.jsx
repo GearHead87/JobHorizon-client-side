@@ -39,7 +39,7 @@ const NavBar = () => {
                 ? <>
                     <li><NavLink to={"/"}>Applied Jobs</NavLink></li>
                     <li><NavLink to={"/add-job"}>Add A Job</NavLink></li>
-                    <li><NavLink to={"/"}>My Jobs</NavLink></li>
+                    <li><NavLink to={"/my-jobs"}>My Jobs</NavLink></li>
                     <li><NavLink to={"/"}>Blogs</NavLink></li>
                 </>
                 : <></>

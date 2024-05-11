@@ -1,50 +1,60 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import useAuth from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const AllJob = () => {
+const MyJobs = () => {
     const axiosSecure = useAxiosSecure();
-    const [searchText, setSearchText] = useState('');
-    const [search, setSearch] = useState('');
+    const { user } = useAuth();
     const { data: jobs = [], isLoading, refetch } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
-            if (searchText) {
-                console.log(searchText);
-                const { data } = await axiosSecure.get(`/jobs?search=${searchText}`)
-                return data;
-            }
-            const { data } = await axiosSecure.get(`/jobs`)
+            const { data } = await axiosSecure.get(`/my-jobs/${user.email}`)
             return data;
         }
     })
-    const handleSearch = e => {
-        e.preventDefault();
-        refetch();
-    }
 
     if (isLoading) {
         return <div className='text-center my-12'>
             <span className="loading loading-spinner loading-lg"></span>
         </div>
     }
+
+    const handleDelete = async (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            axiosSecure.delete(`/job/${id}`)
+                .then(res => {
+                    console.log(res);
+                    if (res.data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                    refetch();
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+        });
+
+
+    }
+
     return (
         <div>
-            <form onSubmit={handleSearch} className='flex justify-center items-center'>
-                <label className="input input-bordered flex items-center gap-2">
-                    <input
-                        onChange={e => setSearchText(e.target.value)}
-                        value={searchText}
-                        type="text" className="grow" placeholder="Search" />
-                    <button>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                    </button>
-                </label>
-            </form>
-
-
             <div className="overflow-x-auto max-w-5xl mx-auto">
                 <table
                     className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm dark:divide-gray-700 dark:bg-gray-900"
@@ -78,11 +88,16 @@ const AllJob = () => {
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">${job.salaryRange}</td>
                                     <td className="whitespace-nowrap px-4 py-2">
                                         <Link
-                                            to={`/job/${job._id}`}
+                                            to={`/update-job/${job._id}`}
                                             className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
                                         >
-                                            View Details
+                                            Update
                                         </Link>
+                                        <button
+                                            onClick={() => handleDelete(job._id)}
+                                            className="inline-block rounded bg-red-600 px-4 ml-4 py-2 text-xs font-medium text-white hover:bg-red-700">
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             ))
@@ -96,4 +111,4 @@ const AllJob = () => {
     );
 };
 
-export default AllJob;
+export default MyJobs;

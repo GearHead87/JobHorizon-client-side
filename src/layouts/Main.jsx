@@ -30,7 +30,9 @@ const Main = () => {
             {/* Navbar */}
             <Navbar></Navbar>
             {/* Outlet */}
-            <Outlet></Outlet>
+            <div className='min-h-[calc(100vh-144px)]'>
+                <Outlet />
+            </div>
             {/* Footer */}
             <Footer></Footer>
         </div>
