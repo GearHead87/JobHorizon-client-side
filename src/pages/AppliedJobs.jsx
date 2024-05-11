@@ -2,12 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useState } from "react";
+import AppliedJobsPDF from "../components/AppliedJobsPDF";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+
+
 
 const AppliedJobs = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [filter, setFilter] = useState('');
-
+    const [showDownloadLink, setShowDownloadLink] = useState(false)
     const handleCategoryFilter = (e) => {
         e.preventDefault();
         refetch();
@@ -27,7 +31,13 @@ const AppliedJobs = () => {
         </div>
     }
 
+
+    const handleGeneratePDF = () => {
+        setShowDownloadLink(true);
+    };
+
     return (
+
         <div className="flex flex-col justify-center items-center">
             <form
                 onSubmit={handleCategoryFilter}
@@ -54,13 +64,33 @@ const AppliedJobs = () => {
                 </button>
             </form>
 
+            {/* Button to trigger PDF generation */}
+            <button
+                className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
+                onClick={handleGeneratePDF}>Generate PDF</button>
+
+            {/* Conditionally render the download link when PDF is ready */}
+            {showDownloadLink && (
+                <PDFDownloadLink
+                    className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
+                    document={<AppliedJobsPDF jobs={jobs} />}
+                    fileName="somename.pdf">
+                    {({ blob, url, loading, error }) =>
+                        loading ? 'Loading document...' : 'Download now!'
+                    }
+                </PDFDownloadLink>
+            )}
+
             {
                 isFetching && <div className='text-center my-12'>
                     <span className="loading loading-spinner loading-lg"></span>
                 </div>
             }
 
-            <div className={`className = overflow-x-auto max-w-5xl mx-auto ${isFetching ? 'hidden' : ''}`}>
+            <div
+                id="container"
+                className={`className = overflow-x-auto max-w-5xl mx-auto ${isFetching ? 'hidden' : ''}`
+                }>
                 <table
                     className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm dark:divide-gray-700 dark:bg-gray-900"
                 >
