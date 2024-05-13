@@ -3,6 +3,7 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 const MyJobs = () => {
     const axiosSecure = useAxiosSecure();
@@ -33,13 +34,14 @@ const MyJobs = () => {
         }).then(() => {
             axiosSecure.delete(`/job/${id}`)
                 .then(res => {
-                    console.log(res);
-                    if (res.data.deletedCount > 0) {
+                    // console.log(res);
+                    if (res.data.success === true) {
                         Swal.fire({
                             title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            text: "Your Post has been deleted.",
                             icon: "success"
                         });
+                        toast.success("Job deleted successfully")
                     }
                     refetch();
                 })
