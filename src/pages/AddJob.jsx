@@ -41,9 +41,12 @@ const AddJob = () => {
         try {
             const { data } = await axiosSecure.post('add-job', jobData)
             console.log(data)
-            navigate('/all-job')
-            toast.success("Job Posted Successfully")
-        } catch(error){
+            if (data.success === true) {
+                navigate('/all-job')
+                toast.success("Job Posted Successfully")
+            }
+
+        } catch (error) {
             console.log(error)
         }
 
@@ -103,6 +106,7 @@ const AddJob = () => {
                                         type="text"
                                         id="jobBannerUrl"
                                         name="jobBannerUrl"
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
@@ -118,6 +122,7 @@ const AddJob = () => {
                                         type="text"
                                         id="jobTitle"
                                         name="jobTitle"
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
@@ -133,6 +138,7 @@ const AddJob = () => {
                                         type="text"
                                         id="userName"
                                         name="userName"
+                                        required
                                         value={user.displayName}
                                         disabled
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
@@ -150,6 +156,7 @@ const AddJob = () => {
                                         type="text"
                                         id="userEmail"
                                         name="userEmail"
+                                        required
                                         value={user.email}
                                         disabled
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
@@ -167,6 +174,7 @@ const AddJob = () => {
                                         type="text"
                                         id="jobCategory"
                                         name="jobCategory"
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     >
                                         <option value='On-Site Job'>On-Site Job</option>
@@ -188,6 +196,7 @@ const AddJob = () => {
                                         type="number"
                                         id="salaryRange"
                                         name="salaryRange"
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
@@ -203,6 +212,7 @@ const AddJob = () => {
                                         type="text"
                                         id="jobDescription"
                                         name="jobDescription"
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
@@ -221,6 +231,7 @@ const AddJob = () => {
                                         // id="jobPostingDate"
                                         // name="jobPostingDate"
                                         disabled
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
@@ -238,6 +249,7 @@ const AddJob = () => {
                                         // type="text"
                                         // id="applicationDeadline"
                                         // name="jobDesapplicationDeadlinecription"
+                                        required
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
@@ -248,8 +260,6 @@ const AddJob = () => {
                                     >
                                         Post Job
                                     </button>
-
-
                                 </div>
                             </form>
                         </div>

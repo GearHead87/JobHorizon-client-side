@@ -38,7 +38,7 @@ const MyJobs = () => {
                     if (res.data.success === true) {
                         Swal.fire({
                             title: "Deleted!",
-                            text: "Your Post has been deleted.",
+                            text: "Job post has been deleted.",
                             icon: "success"
                         });
                         toast.success("Job deleted successfully")

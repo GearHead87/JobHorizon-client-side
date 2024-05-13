@@ -78,7 +78,7 @@ const UpdateJob = () => {
         try {
             const { data } = await axiosSecure.put(`/job/${_id}`, jobData)
             console.log(data);
-            if (data.modifiedCount > 0) {
+            if (data.success === true) {
                 toast.success("Job Updated Successfully");
                 refetch();
                 navigate('/my-jobs')
