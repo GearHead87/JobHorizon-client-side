@@ -206,7 +206,25 @@ const AddJob = () => {
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
-                                <div className="col-span-6">
+                                <div className="col-span-6 sm:col-span-3">
+                                    <label
+                                        htmlFor="jobPostingDate"
+                                        className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                    >
+                                        Job Posting Date (Current Date)
+                                    </label>
+
+                                    <DatePicker
+                                        selected={startDate}
+                                        // onChange={(date) => setStartDate(date)}
+                                        // type="text"
+                                        // id="jobPostingDate"
+                                        // name="jobPostingDate"
+                                        disabled
+                                        className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                                    />
+                                </div>
+                                <div className="col-span-6 sm:col-span-3">
                                     <label
                                         htmlFor="applicationDeadline"
                                         className="block text-sm font-medium text-gray-700 dark:text-gray-200"

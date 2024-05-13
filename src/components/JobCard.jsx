@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const JobCard = ({ job }) => {
+    const { user } = useAuth();
     const {
         _id,
         jobBannerUrl,
@@ -33,7 +36,7 @@ const JobCard = ({ job }) => {
 
                     <div className="flex items-center justify-between">
                         <span className="text-2xl font-bold text-gray-900 dark:text-white">${salaryRange}</span>
-                        <Link to={`/job/${_id}`} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View Details</Link>
+                        <Link onClick={() => user || toast.error('You have to log in first to view details')} to={`/job/${_id}`} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View Details</Link>
                     </div>
                 </div>
             </div>

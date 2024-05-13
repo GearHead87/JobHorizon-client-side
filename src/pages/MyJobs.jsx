@@ -60,11 +60,14 @@ const MyJobs = () => {
                 >
                     <thead className="ltr:text-left rtl:text-right">
                         <tr>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Job Title</th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Title</th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Category</th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Description</th>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
-                                Job Posting Date
+                                Posting Date
                             </th>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Application Deadline</th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Applicants Number</th>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                                 Salary range
                             </th>
@@ -82,8 +85,17 @@ const MyJobs = () => {
                                     <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                                         {job.jobTitle}
                                     </td>
+                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">
+                                        {job.jobCategory}
+                                    </td>
+                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">
+                                        {job.jobDescription}
+                                    </td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">{new Date(job.jobPostingDate).toLocaleDateString()}</td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">{new Date(job.applicationDeadline).toLocaleDateString()}</td>
+                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">
+                                        {job.jobApplicantsNumber}
+                                    </td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">${job.salaryRange}</td>
                                     <td className="whitespace-nowrap px-4 py-2">
                                         <Link

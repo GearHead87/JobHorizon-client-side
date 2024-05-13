@@ -12,7 +12,7 @@ const UpdateJob = () => {
     const { user } = useAuth();
     const [startDate, setStartDate] = useState(new Date())
     const { id } = useParams()
-    
+
     // fetch Data
     const { data, isLoading, refetch } = useQuery({
         queryKey: [`job-update-${id}`],
@@ -71,7 +71,7 @@ const UpdateJob = () => {
             jobApplicantsNumber,
         }
 
-        if(user.email !== userEmail){
+        if (user.email !== userEmail) {
             return toast.error("You can't modify others job")
         }
 
@@ -129,8 +129,7 @@ const UpdateJob = () => {
                             </h1>
 
                             <p className="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                                quibusdam aperiam voluptatum.
+                                Update the details of your job listing to attract top talent and optimize your recruitment process. Make changes to job title, category, salary range, and description effortlessly.
                             </p>
 
                             <form onSubmit={handleform} className="mt-8 grid grid-cols-6 gap-6">
@@ -254,7 +253,25 @@ const UpdateJob = () => {
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
                                 </div>
-                                <div className="col-span-6">
+                                <div className="col-span-6 sm:col-span-3">
+                                    <label
+                                        htmlFor="jobPostingDate"
+                                        className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                    >
+                                        Job Posting Date
+                                    </label>
+
+                                    <DatePicker
+                                        selected={jobPostingDate}
+                                        // onChange={(date) => setStartDate(date)}
+                                        // type="text"
+                                        // id="jobPostingDate"
+                                        // name="jobPostingDate"
+                                        disabled
+                                        className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                                    />
+                                </div>
+                                <div className="col-span-6 sm:col-span-3">
                                     <label
                                         htmlFor="applicationDeadline"
                                         className="block text-sm font-medium text-gray-700 dark:text-gray-200"
@@ -276,7 +293,7 @@ const UpdateJob = () => {
                                     <button
                                         className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
                                     >
-                                        Post Job
+                                        Update Information
                                     </button>
 
 

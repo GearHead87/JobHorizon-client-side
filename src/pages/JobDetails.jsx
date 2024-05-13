@@ -89,10 +89,10 @@ const JobDetails = () => {
 
 
     return (
-        <div className="flex flex-col md:flex-row justify-center items-center max-w-5xl mx-auto bg-slate-200 dark:bg-slate-700 rounded-xl">
+        <div className="flex flex-col md:flex-row justify-center items-center max-w-5xl mt-10 mx-auto bg-slate-200 dark:bg-slate-700 rounded-xl">
             <div >
                 <img
-                    className="object-cover max-w-96 rounded-xl border-4 border-gray-400"
+                    className="object-cover max-w-96 rounded-xl border-4 m-4 border-gray-400"
                     src={jobBannerUrl} alt="" />
             </div>
 
