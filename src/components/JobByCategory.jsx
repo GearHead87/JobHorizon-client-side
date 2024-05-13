@@ -20,7 +20,7 @@ const JobByCategory = () => {
             return data;
         }
     })
-    console.log(jobs)
+    // console.log(jobs)
 
     return (
         <div>

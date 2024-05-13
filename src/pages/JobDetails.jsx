@@ -21,7 +21,7 @@ const JobDetails = () => {
             <span className="loading loading-spinner loading-lg"></span>
         </div>
     }
-    
+
     const {
         _id,
         jobBannerUrl,
@@ -71,10 +71,12 @@ const JobDetails = () => {
 
         axiosSecure.post('/apply-job', jobData)
             .then(res => {
-                console.log(res);
-                if(res.data.message){
+                console.log(res.data);
+                if (res.data.success === true) {
                     refetch();
                     toast.success("Job applied Successfully")
+                    const close = document.getElementById('modal-close')
+                    close
                 }
 
             })
@@ -211,6 +213,9 @@ const JobDetails = () => {
 
                                                     <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                                                         <button
+                                                            onClick={() => {
+                                                                document.getElementById('close-btn').click();
+                                                            }}
                                                             className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
                                                         >
                                                             Submit
@@ -223,7 +228,7 @@ const JobDetails = () => {
                                 </section>
                             </div>
                             <form method="dialog" className="modal-backdrop">
-                                <button>close</button>
+                                <button id='close-btn'>close</button>
                             </form>
                         </dialog>
 
