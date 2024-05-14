@@ -38,48 +38,51 @@ const AppliedJobs = () => {
 
     return (
 
-        <div className="flex flex-col justify-center items-center">
-            <form
-                onSubmit={handleCategoryFilter}
-                className=" my-4 flex justify-center items-center">
-                <select
-                    onChange={e => {
-                        setFilter(e.target.value)
-                    }}
-                    type="text"
-                    id="jobCategory"
-                    name="jobCategory"
-                    defaultValue={''}
-                    className="mt-1 w-52 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
-                >
-                    <option value="">All Category</option>
-                    <option value='On-Site Job'>On-Site Job</option>
-                    <option value='Remote Job'>Remote Job</option>
-                    <option value='Hybrid'>Hybrid</option>
-                    <option value='Part-Time'>Part-Time</option>
-                </select>
+        <div>
+            <div className="flex flex-col justify-center items-center">
+                <form
+                    onSubmit={handleCategoryFilter}
+                    className=" my-4 flex justify-center items-center">
+                    <select
+                        onChange={e => {
+                            setFilter(e.target.value)
+                        }}
+                        type="text"
+                        id="jobCategory"
+                        name="jobCategory"
+                        defaultValue={''}
+                        className="mt-1 w-52 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                    >
+                        <option value="">All Category</option>
+                        <option value='On-Site Job'>On-Site Job</option>
+                        <option value='Remote Job'>Remote Job</option>
+                        <option value='Hybrid'>Hybrid</option>
+                        <option value='Part-Time'>Part-Time</option>
+                    </select>
+                    <button
+                        className="inline-block rounded bg-indigo-600 px-4 py-2 ml-4 text-xs font-medium text-white hover:bg-indigo-700">
+                        Apply
+                    </button>
+                </form>
+
+                {/* Button to trigger PDF generation */}
                 <button
-                    className="inline-block rounded bg-indigo-600 px-4 py-2 ml-4 text-xs font-medium text-white hover:bg-indigo-700">
-                    Apply
-                </button>
-            </form>
-
-            {/* Button to trigger PDF generation */}
-            <button
-                className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
-                onClick={handleGeneratePDF}>Generate PDF</button>
-
-            {/* Conditionally render the download link when PDF is ready */}
-            {showDownloadLink && (
-                <PDFDownloadLink
                     className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
-                    document={<AppliedJobsPDF jobs={jobs} />}
-                    fileName="somename.pdf">
-                    {({ blob, url, loading, error }) =>
-                        loading ? 'Loading document...' : 'Download now!'
-                    }
-                </PDFDownloadLink>
-            )}
+                    onClick={handleGeneratePDF}>Generate PDF</button>
+
+                {/* Conditionally render the download link when PDF is ready */}
+                {showDownloadLink && (
+                    <PDFDownloadLink
+                        className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
+                        document={<AppliedJobsPDF jobs={jobs} />}
+                        fileName="somename.pdf">
+                        {({ blob, url, loading, error }) =>
+                            loading ? 'Loading document...' : 'Download now!'
+                        }
+                    </PDFDownloadLink>
+                )}
+            </div>
+
 
             {
                 isFetching && <div className='text-center my-12'>
