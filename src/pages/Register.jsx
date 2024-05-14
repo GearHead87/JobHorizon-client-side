@@ -117,12 +117,11 @@ const Register = () => {
                                 </p>
 
                                 <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
-                                    Welcome to Squid 🦑
+                                    Welcome to Squid 💼
                                 </h1>
 
                                 <p className="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                                    quibusdam aperiam voluptatum.
+                                Create your account to unlock exciting job opportunities and streamline your job search experience. Join our community of job seekers and employers today!
                                 </p>
                             </div>
 
