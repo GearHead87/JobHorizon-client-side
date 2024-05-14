@@ -2,12 +2,13 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const Blogs = () => {
-    <Helmet>
-
-    </Helmet>
 
     return (
         <div>
+            <Helmet>
+                <title>JobHorizon | Blogs</title>
+            </Helmet>
+
             <div className="mx-auto max-w-3xl p-6">
                 <h1 className="text-3xl font-bold mb-4">Understanding Access Tokens and Express.js vs. NestJS</h1>
 

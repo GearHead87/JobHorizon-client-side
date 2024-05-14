@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const AllJob = () => {
     const axiosSecure = useAxiosSecure();
@@ -30,6 +31,10 @@ const AllJob = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>JobHorizon | All Jobs</title>
+            </Helmet>
+
             <form onSubmit={handleSearch} className='flex justify-center items-center'>
                 <label className="input input-bordered flex items-center gap-2">
                     <input

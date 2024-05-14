@@ -1,8 +1,13 @@
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
         <div>
+            <Helmet>
+                <title>JobHorizon | Error 404!</title>
+            </Helmet>
+            
             <div className="grid h-screen place-content-center bg-white px-4 dark:bg-gray-900">
                 <div className="text-center">
                     <h1 className="text-9xl font-black text-gray-200 dark:text-gray-700">404</h1>

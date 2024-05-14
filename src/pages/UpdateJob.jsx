@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const UpdateJob = () => {
     const axiosSecure = useAxiosSecure();
@@ -95,6 +96,10 @@ const UpdateJob = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>JobHorizon | Update Job</title>
+            </Helmet>
+
             <section className="bg-white dark:bg-gray-900">
                 <div className="">
                     {/* <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">

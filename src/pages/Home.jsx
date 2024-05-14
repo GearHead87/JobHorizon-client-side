@@ -3,6 +3,7 @@ import Banner from '../components/Banner';
 import ContactUs from '../components/ContactUs';
 import FaqSection from '../components/FaqSection';
 import JobByCategory from '../components/JobByCategory';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     const { scrollYProgress } = useScroll();
@@ -14,6 +15,10 @@ const Home = () => {
 
     return (
         <div className="max-w-screen-2xl mx-auto">
+            <Helmet>
+                <title>JobHorizon | Home</title>
+            </Helmet>
+
             {/* Progress bar using Framer Motion */}
             <motion.div
                 className="progress-bar"

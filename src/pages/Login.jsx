@@ -42,7 +42,7 @@ const Login = () => {
     return (
         <div className="lg:my-10 lg:mx-10 mx-4">
             <Helmet>
-                <title>Login</title>
+                <title>JobHorizon | Login</title>
             </Helmet>
             
             <section className="relative flex flex-wrap flex-col-reverse lg:flex-row lg:h-screen lg:items-center">

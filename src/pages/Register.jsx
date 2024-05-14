@@ -55,8 +55,9 @@ const Register = () => {
     return (
         <div className="mx-4 lg:m-10 ">
             <Helmet>
-                <title>Register</title>
+                <title>JobHorizon | Register</title>
             </Helmet>
+
             <section className="bg-white dark:bg-gray-900">
                 <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
                     <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
@@ -121,7 +122,7 @@ const Register = () => {
                                 </h1>
 
                                 <p className="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
-                                Create your account to unlock exciting job opportunities and streamline your job search experience. Join our community of job seekers and employers today!
+                                    Create your account to unlock exciting job opportunities and streamline your job search experience. Join our community of job seekers and employers today!
                                 </p>
                             </div>
 

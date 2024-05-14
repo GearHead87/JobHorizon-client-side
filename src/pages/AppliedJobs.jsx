@@ -4,6 +4,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useState } from "react";
 import AppliedJobsPDF from "../components/AppliedJobsPDF";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { Helmet } from "react-helmet";
 
 
 
@@ -39,6 +40,10 @@ const AppliedJobs = () => {
     return (
 
         <div>
+            <Helmet>
+                <title>JobHorizon | My Applied Jobs</title>
+            </Helmet>
+            
             <div className="flex flex-col justify-center items-center">
                 <form
                     onSubmit={handleCategoryFilter}

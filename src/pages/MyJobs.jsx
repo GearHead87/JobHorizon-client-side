@@ -4,6 +4,7 @@ import useAuth from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const MyJobs = () => {
     const axiosSecure = useAxiosSecure();
@@ -56,6 +57,10 @@ const MyJobs = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>JobHorizon | My Posted Jobs</title>
+            </Helmet>
+            
             <div className="overflow-x-auto max-w-5xl mx-auto">
                 <table
                     className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm dark:divide-gray-700 dark:bg-gray-900"

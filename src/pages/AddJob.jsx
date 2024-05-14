@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const AddJob = () => {
     const [startDate, setStartDate] = useState(new Date())
@@ -53,7 +54,10 @@ const AddJob = () => {
     }
     return (
         <div>
-
+            <Helmet>
+                <title>JobHorizon | Post Job</title>
+            </Helmet>
+            
             <section className="bg-white dark:bg-gray-900">
                 <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
                     <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
