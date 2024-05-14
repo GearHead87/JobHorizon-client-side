@@ -1,26 +1,32 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useAxiosSecure from '../hooks/useAxiosSecure';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import JobCard from './JobCard';
 const JobByCategory = () => {
 
     const axiosSecure = useAxiosSecure();
-    const [searchText, setSearchText] = useState('');
-    const { data: jobs = [], isLoading, refetch } = useQuery({
+    // const [searchText, setSearchText] = useState('');
+    const { data: jobs = [], isLoading } = useQuery({
         queryKey: ['jobs-Category'],
         queryFn: async () => {
-            if (searchText) {
-                console.log(searchText);
-                const { data } = await axiosSecure.get(`/jobs?search=${searchText}`)
-                return data;
-            }
+            // if (searchText) {
+            //     console.log(searchText);
+            //     const { data } = await axiosSecure.get(`/jobs?search=${searchText}`)
+            //     return data;
+            // }
             const { data } = await axiosSecure.get(`/jobs`)
             return data;
         }
     })
     // console.log(jobs)
+
+    if (isLoading) {
+        return <div className='text-center my-12'>
+            <span className="loading loading-spinner loading-lg"></span>
+        </div>
+    }
 
     return (
         <div>

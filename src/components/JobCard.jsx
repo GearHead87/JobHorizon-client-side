@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import PropTypes from 'prop-types'; // ES6
 
 const JobCard = ({ job }) => {
     const { user } = useAuth();
@@ -9,10 +10,10 @@ const JobCard = ({ job }) => {
         jobBannerUrl,
         jobTitle,
         userName,
-        userEmail,
-        jobCategory,
+        // userEmail,
+        // jobCategory,
         salaryRange,
-        jobDescription,
+        // jobDescription,
         jobPostingDate,
         applicationDeadline,
         jobApplicantsNumber,
@@ -20,7 +21,7 @@ const JobCard = ({ job }) => {
 
     return (
         <div>
-            <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
+            <div className="w-full max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
                 <p className="w-fit absolute right-1 top-4 p-1 text-blue-700 text-sm font-bold rounded-lg bg-gray-200 group dark:bg-gray-600 dark:text-white">Application Deadine: {new Date(applicationDeadline).toLocaleDateString()}</p>
                 <p>
                     <img className="p-8 rounded-t-lg" src={jobBannerUrl} alt="product image" />
@@ -46,3 +47,7 @@ const JobCard = ({ job }) => {
 };
 
 export default JobCard;
+
+JobCard.propTypes = {
+    job: PropTypes.object,
+}
