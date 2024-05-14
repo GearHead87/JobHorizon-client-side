@@ -60,7 +60,10 @@ const NavBar = () => {
                             {NavLinks}
                         </ul>
                     </div>
-                    <Link to={'/'} className="btn btn-ghost text-xl">JobHorizon</Link>
+                    <div className="flex flex-col justify-center items-center md:flex-row">
+                        <img className="btn btn-ghost" src="./JobHorizonCrop.png" alt="" />
+                        <Link to={'/'} className="btn btn-ghost text-base lg:text-xl">JobHorizon</Link>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
