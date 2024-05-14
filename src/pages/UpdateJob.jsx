@@ -41,8 +41,9 @@ const UpdateJob = () => {
         salaryRange,
         jobDescription,
         jobPostingDate,
-        applicationDeadline,
-        jobApplicantsNumber } = data;
+        // applicationDeadline,
+        // jobApplicantsNumber
+    } = data;
 
     const handleform = async e => {
         e.preventDefault();
