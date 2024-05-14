@@ -139,7 +139,7 @@ const AddJob = () => {
                                         id="userName"
                                         name="userName"
                                         required
-                                        value={user.displayName}
+                                        value={user?.displayName}
                                         disabled
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />
@@ -157,7 +157,7 @@ const AddJob = () => {
                                         id="userEmail"
                                         name="userEmail"
                                         required
-                                        value={user.email}
+                                        value={user?.email}
                                         disabled
                                         className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                                     />

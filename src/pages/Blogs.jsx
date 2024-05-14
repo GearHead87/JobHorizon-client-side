@@ -48,6 +48,27 @@ const Blogs = () => {
                     </p>
                 </section>
 
+                {/* Explain Your Job-Seeking Website Project */}
+                <section className="mb-8">
+                    <h2 className="text-2xl font-bold mb-2">3. Explain Your Job-Seeking Website Project</h2>
+                    <p className="mb-4">
+                        We are developing a user-friendly job-seeking website using React, MongoDB, Node.js, Express.js, Firebase, and JWT Token
+                        authentication. The features of our website include:
+                    </p>
+                    <ul className="list-disc pl-4 mb-4">
+                        <li>User can post job listings.</li>
+                        <li>Other users can view and apply for job positions.</li>
+                        <li>User can edit or delete their posted jobs but not jobs posted by others.</li>
+                        <li>User can view the list of jobs they have applied for but cannot see jobs applied by other users.</li>
+                    </ul>
+                    <p className="mb-4">
+                        This project aims to create a seamless and secure platform for job seekers and employers to interact and manage job
+                        listings effectively. Firebase is used for real-time database capabilities, enabling dynamic updates and interactions
+                        within the platform.
+                    </p>
+                </section>
+
+
                 {/* Conclusion and Call to Action */}
                 <div className="text-center">
                     <p className="mb-4">
