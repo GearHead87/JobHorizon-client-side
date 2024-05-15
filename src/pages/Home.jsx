@@ -30,7 +30,8 @@ const Home = () => {
                     left: 0,
                     right: 0,
                     height: '10px',
-                    background: 'red',
+                    // background: 'red',
+                    backgroundImage: 'linear-gradient(to right, #48BB78, #4299E1, #9F7AEA)',
                     zIndex: 999,
                 }}
             />

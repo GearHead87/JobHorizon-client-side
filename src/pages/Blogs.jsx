@@ -20,10 +20,13 @@ const Blogs = () => {
                         a user. An access token is typically a short-lived token used to access protected resources, while a refresh
                         token is a long-lived token used to obtain new access tokens when they expire.
                     </p>
+                    <h4 className="text-xl font-semibold mb-2"><li>How do they work and where should
+                        we store them on the client side?</li></h4>
                     <p className="mb-4">
                         Access tokens are sent with each request to authenticate the user, while refresh tokens are securely stored on
                         the client side and used to obtain new access tokens without requiring the user to log in again.
                     </p>
+
                     <p className="mb-4">
                         Access tokens should be stored in memory (e.g., in browser memory or a secure storage mechanism) for security
                         reasons. Refresh tokens should be stored securely on the client side, such as in an HTTP-only cookie or secure

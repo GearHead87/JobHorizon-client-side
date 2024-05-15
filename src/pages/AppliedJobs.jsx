@@ -43,7 +43,7 @@ const AppliedJobs = () => {
             <Helmet>
                 <title>JobHorizon | My Applied Jobs</title>
             </Helmet>
-            
+
             <div className="flex flex-col justify-center items-center">
                 <form
                     onSubmit={handleCategoryFilter}
@@ -73,14 +73,14 @@ const AppliedJobs = () => {
                 {/* Button to trigger PDF generation */}
                 <button
                     className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
-                    onClick={handleGeneratePDF}>Generate PDF</button>
+                    onClick={handleGeneratePDF}>Generate Summary PDF</button>
 
                 {/* Conditionally render the download link when PDF is ready */}
                 {showDownloadLink && (
                     <PDFDownloadLink
                         className="inline-block rounded bg-indigo-600 px-4 py-2 mt-4 text-xs font-medium text-white hover:bg-indigo-700"
                         document={<AppliedJobsPDF jobs={jobs} />}
-                        fileName="somename.pdf">
+                        fileName={`${user?.displayName}'s Applied Jobs.pdf`}>
                         {({ blob, url, loading, error }) =>
                             loading ? 'Loading document...' : 'Download now!'
                         }
@@ -113,6 +113,12 @@ const AppliedJobs = () => {
                                 Salary range
                             </th>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
+                                Applicant Name
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
+                                Applicant Email
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                                 Resume Link
                             </th>
                             <th className="px-4 py-2"></th>
@@ -129,6 +135,8 @@ const AppliedJobs = () => {
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">{new Date(job.applicationDeadline).toLocaleDateString()}</td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">{job.jobCategory}</td>
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">${job.salaryRange}</td>
+                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">{job.application.applicantUserName}</td>
+                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">{job.application.applicantUserEmail}</td>
                                     <td className="whitespace-nowrap px-4 py-2">
                                         <a
                                             href={job.application.resumeLink}

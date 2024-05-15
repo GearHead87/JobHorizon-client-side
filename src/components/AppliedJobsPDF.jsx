@@ -1,4 +1,5 @@
-import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import PropTypes from 'prop-types'; // ES6
 
 const styles = StyleSheet.create({
     page: {
@@ -27,6 +28,8 @@ const AppliedJobsPDF = ({ jobs }) => {
                         <Text>Application Deadline: {new Date(job.applicationDeadline).toLocaleDateString()}</Text>
                         <Text>Job Category: {job.jobCategory}</Text>
                         <Text>Salary Range: ${job.salaryRange}</Text>
+                        <Text>Applicant Name: {job.application.applicantUserName}</Text>
+                        <Text>Applicant Email: {job.application.applicantUserEmail}</Text>
                         <Text>Resume Link: {job.application.resumeLink}</Text>
                     </View>
                 ))}
@@ -37,3 +40,7 @@ const AppliedJobsPDF = ({ jobs }) => {
 };
 
 export default AppliedJobsPDF;
+
+AppliedJobsPDF.propTypes = {
+    jobs: PropTypes.array,
+}

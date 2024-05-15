@@ -3,9 +3,12 @@ import { useState } from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import toast from 'react-hot-toast';
+import useAuth from '../hooks/useAuth';
 
 const AllJob = () => {
     const axiosSecure = useAxiosSecure();
+    const {user } = useAuth();
     const [searchText, setSearchText] = useState('');
     const { data: jobs = [], isLoading, refetch } = useQuery({
         queryKey: ['jobs'],
@@ -82,6 +85,7 @@ const AllJob = () => {
                                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200">${job.salaryRange}</td>
                                     <td className="whitespace-nowrap px-4 py-2">
                                         <Link
+                                            onClick={() => user || toast.error('You have to log in first to view details')}
                                             to={`/job/${job._id}`}
                                             className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
                                         >

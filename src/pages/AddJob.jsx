@@ -228,7 +228,7 @@ const AddJob = () => {
                                     </label>
 
                                     <DatePicker
-                                        selected={startDate}
+                                        selected={new Date()}
                                         // onChange={(date) => setStartDate(date)}
                                         // type="text"
                                         // id="jobPostingDate"
